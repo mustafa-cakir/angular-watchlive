@@ -1,0 +1,6 @@
+<md-button
+    ng-class="{active: $uiRoute}"
+    ng-href="{{section.url}}"
+    ng-click="focusSection()">
+  <md-icon ng-if="section.icon">{{section.icon}}</md-icon> {{section.name}}
+</md-button>

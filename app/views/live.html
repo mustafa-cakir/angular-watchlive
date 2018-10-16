@@ -1,0 +1,57 @@
+<div ng-show="loading" class="loading fade">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<ui-view class="p-0">
+  <md-tabs md-selected="selectedIndex" class="md-primary md-hue-1" md-stretch-tabs="never" md-swipe-content >
+    <md-tab ng-repeat="(key,value) in liveSports" label="{{value.name}}">
+      <div class="demo-tab tab{{$index%4}}" style="padding: 25px; text-align: left">
+        <div ng-bind="tab.content"></div>
+          <div ng-repeat="(key, value) in value.matches  | orderBy:sortByCountry">
+            <md-subheader class="stickyHeader"><i ng-bind-html="value.Country | countryCode"></i> {{value.Country}} - {{value.League}}</md-subheader>
+            <div class="tabInner">
+              <div ng-repeat="(key, value) in value.matches">
+                <md-card class="livecards">
+                  <md-card-title>
+                   <md-card-title-text>
+                     <div class="row md-headline">
+                       <div class="col-1 col-md-2 text-left minutes">{{ checkMinutes(value.matchTime)}}</div>
+                       <div class="col-4 col-md-3 text-right home">{{ value.name | homeTeam }}</div>
+                       <div class="col-2 col-md-2 text-center score">{{value.score1}} <span>-</span>  {{value.score2}}</div>
+                       <div class="col col-md-3 text-left away">{{ value.name | awayTeam }}</div>
+                       <div class="col-1 col-md-2 text-right away">
+                         <md-button ng-if="value.StreamingId" ng-href="#!/live/id/{{ value.Id }}" class="md-fab md-warn watch-live" aria-label="Watch Live">
+                           <md-tooltip md-direction="top" >Watch Live</md-tooltip>
+                           <md-icon>play_arrow</md-icon>
+                         </md-button>
+                         <md-button ng-if="!value.StreamingId" ng-href="#!/live/id/{{ value.Id }}" class="md-fab" aria-label="Watch Live">
+                           <md-tooltip md-direction="top" ng-if="!value.StreamingId">Live Statistics</md-tooltip>
+                           <md-icon>trending_up</md-icon>
+                         </md-button>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col status text-center">
+                         {{value.MatchStatus | matchStatus}}
+                       </div>
+                     </div>
+
+                   </md-card-title-text>
+                 </md-card-title>
+
+                  <!--<div><strong>Id: </strong>{{value.Id}}</div>
+                  <div><strong>Home Name: </strong>{{ value.name | homeTeam }}</div>
+                  <div><strong>Away Name: </strong>{{ value.name | awayTeam }}</div>
+                  <div><strong>Score home: </strong>{{value.score1}}</div>
+                  <div><strong>Score away: </strong>{{value.score2}}</div>
+                  <div><strong>Time: </strong>{{value.matchTime}}</div>
+                  <div><strong>Status: </strong>{{value.MatchStatus | matchStatus}}</div>
+                  <div><strong>Streaming ID: </strong> {{ value.StreamingIdOLD}}</div>
+                  <div ng-if="value.StreamingId"><strong><a ng-href="#!/live/{{ value.StreamingId }}">PLAY</a></div>-->
+                </md-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </md-tab>
+  </md-tabs>
+</ui-view>

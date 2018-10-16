@@ -1,0 +1,46 @@
+<div ng-show="loading" class="loading fade">
+    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</div>
+<div class="matchDetailsContainer">
+  <md-toolbar class="matchDetailsInfo md-whiteframe-z2 md-primary md-hue-1">
+      <div><img ng-src="images/sports-icons/{{ matchDetails.patch.Sport.Name | sportName}}.png" class="sport-icon" /> {{ matchDetails.patch.Sport.Name }} <span>-</span> <i ng-bind-html="matchDetails.patch.Region.Name | countryCode"></i> {{ matchDetails.patch.Region.Name }}, {{ matchDetails.patch.League.Name }}</div>
+  </md-toolbar>
+  <md-card class="matchDetails">
+      <header>
+
+        <div class="row">
+          <div class="col">
+            <div class="row">
+              <div class="col-4 text-center pr-0">
+                 <img src="https://ls.sportradar.com/ls/crest/big/{{matchDetails.patch.HomeId}}.png" style="width: 65px;"/>
+              </div>
+              <div class="col-8 text-right">
+                  {{ matchDetails.Home}}
+              </div>
+            </div>
+          </div>
+          <div class="col-3 score text-center">
+            {{matchDetails.patch.Score.Home}} - {{matchDetails.patch.Score.Away}} <Br />
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="col-8 text-left">
+                {{ matchDetails.Away}}
+              </div>
+              <div class="col-4 text-center pl-0">
+                <img src="https://ls.sportradar.com/ls/crest/big/{{matchDetails.patch.AwayId}}.png" style="width: 65px;"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center status fontSmall mt-4 mt-sm-0">
+            {{matchDetails.patch.MatchTime}}"</span> / <span nt-status>{{matchDetails.patch.MatchStatus | matchStatus}}
+          </div>
+        </div>
+      </header>
+    <md-card-content>
+      <div ng-bind-html="printStream(matchDetails)"></div>
+    </md-card-content>
+  </md-card>
+</div>
