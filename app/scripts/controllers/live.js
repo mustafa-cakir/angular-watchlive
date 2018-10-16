@@ -27,7 +27,7 @@ function LiveCtrl($scope, $rootScope, $state, $http) {
     console.log('error: ' + err);
   }
   //$http.get('/scripts/getLiveSports.json').then(successCallback, errorCallback);
-  $http.get('URL_GOES_HERE/api/getLiveSports').then(successCallback, errorCallback);
+  $http.get('/scripts/getLiveSports.json').then(successCallback, errorCallback);
   $scope.checkMinutes = function(min) {
     return (min === '0"') ? '' : min;
   };

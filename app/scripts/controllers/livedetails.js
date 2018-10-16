@@ -36,7 +36,6 @@ function LivedetailsCtrl($scope, $rootScope, $state, $stateParams, $http, $sce) 
   function errorCallback(err) {
     console.log('error: ' + err);
   }
-  //$http.get('/scripts/getLiveSports.json').then(successCallback, errorCallback);
   $http.get('URL_GOES_HERE/api/getLiveMatch/' + $stateParams.id).then(successCallback, errorCallback);
 
   $rootScope.goBack = function() {
