@@ -37,7 +37,7 @@ function LivedetailsCtrl($scope, $rootScope, $state, $stateParams, $http, $sce) 
     console.log('error: ' + err);
   }
   //$http.get('/scripts/getLiveSports.json').then(successCallback, errorCallback);
-  $http.get('https://maxwinbet22.com/api/getLiveMatch/' + $stateParams.id).then(successCallback, errorCallback);
+  $http.get('URL_GOES_HERE/api/getLiveMatch/' + $stateParams.id).then(successCallback, errorCallback);
 
   $rootScope.goBack = function() {
     history.back();
